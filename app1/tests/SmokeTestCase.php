@@ -45,6 +45,10 @@ class SmokeTestCase extends WebTestCase
     protected function sendPostRequest(string $routeName, array $parameters): void
     {
         $uri = $this->router->generate($routeName);
-        $this->client->request(self::POST_HTTP_METHOD, $uri, $parameters);
+        $this->client->request(
+            method    : self::POST_HTTP_METHOD,
+            uri       : $uri,
+            parameters: $parameters,
+        );
     }
 }

@@ -12,7 +12,10 @@ final class CreateUserControllerTest extends SmokeTestCase
 
     public function test_Create_ShouldReturnCreatedUser_WhenAllPassedValuesAreCorrect(): void
     {
-        $this->sendPostRequest(self::ROUTE_NAME, []);
+        $this->sendPostRequest(self::ROUTE_NAME, [
+            'id' => 'C831F4D0-1B54-46C2-9C72-3BB041079579',
+            'email' => 'test@email.com'
+        ]);
 
         self::assertResponseStatusCodeSame(201);
     }
