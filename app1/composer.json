@@ -15,12 +15,15 @@
         "symfony/yaml": "6.3.*"
     },
     "require-dev": {
+        "slevomat/coding-standard": "^8.13",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
     },
