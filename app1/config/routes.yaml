@@ -1,0 +1,4 @@
+user.create:
+  path: /api/users
+  methods: POST
+  controller: App\Core\CreateUser\Presentation\CreateUserController::create
