@@ -16,25 +16,25 @@ if (file_exists(dirname(__DIR__).'/config/bootstrap.php')) {
     (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 }
 
-$filter = new Filter;
-
-$filter->includeFiles(
-    [
-        '/path/to/file.php',
-        '/path/to/another_file.php',
-    ]
-);
-
-$coverage = new CodeCoverage(
-    (new Selector)->forLineCoverage($filter),
-    $filter
-);
-
-$coverage->start('<name of test>');
-
-// ...
-
-$coverage->stop();
-
-
-(new HtmlReport)->process($coverage, '/tmp/code-coverage-report');
+//$filter = new Filter;
+//
+//$filter->includeFiles(
+//    [
+//        '/path/to/file.php',
+//        '/path/to/another_file.php',
+//    ]
+//);
+//
+//$coverage = new CodeCoverage(
+//    (new Selector)->forLineCoverage($filter),
+//    $filter
+//);
+//
+//$coverage->start('<name of test>');
+//
+//// ...
+//
+//$coverage->stop();
+//
+//
+//(new HtmlReport)->process($coverage, '/tmp/code-coverage-report');
