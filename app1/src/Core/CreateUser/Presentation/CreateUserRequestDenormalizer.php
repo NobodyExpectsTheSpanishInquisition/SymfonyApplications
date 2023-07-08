@@ -7,6 +7,7 @@ namespace App\Core\CreateUser\Presentation;
 use App\Core\Shared\Request\CannotDenormalizeRequestException;
 use App\Core\Shared\ValueObject\Email;
 use App\Core\Shared\ValueObject\Uuid;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final readonly class CreateUserRequestDenormalizer
 {
@@ -16,6 +17,10 @@ final readonly class CreateUserRequestDenormalizer
         self::ID_FIELD,
         self::EMAIL_FIELD
     ];
+
+    public function __construct(private ValidatorInterface $validator)
+    {
+    }
 
     /**
      * @param array<string, string> $data
@@ -28,6 +33,12 @@ final readonly class CreateUserRequestDenormalizer
         }
 
         $request = new CreateUserRequest(new Uuid($data['id']), new Email($data['email']));
+
+        $violations = $this->validator->validate($request);
+
+        if (0 !== $violations->count()) {
+            throw CannotDenormalizeRequestException::becauseRequestViolatesRules((string) $violations);
+        }
 
         return $request;
 
