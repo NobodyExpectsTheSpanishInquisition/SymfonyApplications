@@ -94,4 +94,16 @@ To ensure better code quality with code_sniffer installed is **slevomat/coding-s
 **TypeHints**
 - DeclareStrictTypes
 
-Example file with prepared configuration can be found in ./config/phpcs.xml.example
+Example file with prepared configuration can be found in **./config/phpcs.xml.example**
+
+### phpstan
+
+To ensure higher code quality was used phpstan on level 9.
+
+#### Execution
+
+`` vendor/bin/phpstan `` - Run phpstan analysis
+
+`` vendor/bin/phpstan --generate-baseline`` - ignore found errors and put them to baseline file.
+
+Example file with phpstan configuration can be found in **./config/phpstan.neon.example**
