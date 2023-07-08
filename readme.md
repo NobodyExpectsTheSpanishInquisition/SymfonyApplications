@@ -107,3 +107,17 @@ To ensure higher code quality was used phpstan on level 9.
 `` vendor/bin/phpstan --generate-baseline`` - ignore found errors and put them to baseline file.
 
 Example file with phpstan configuration can be found in **./config/phpstan.neon.example**
+
+### Tests
+
+#### Tools
+- PHP Unit
+
+#### PHP Unit flow
+
+**Test types**
+
+- Smoke - Check if feature works and does not throw 500 status code or exception.
+- Integration - Check integration between application and external service. For example check if data were correctly 
+  saved in database.
+- Unit - Check if domain logic is implemented correctly or single service works as expected. 
