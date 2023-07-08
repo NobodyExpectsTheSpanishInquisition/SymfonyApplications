@@ -1,0 +1,12 @@
+services:
+  app-1:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.app1
+      args:
+        - IMAGE_TAG=${PHP_IMAGE_TAG}
+    container_name: app-1
+    volumes:
+      - ./app1:/var/www/html:rw
