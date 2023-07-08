@@ -2,8 +2,7 @@
 
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
-    <config name="installed_paths"
-            value="./vendor/slevomat/coding-standard"/><!-- relative path from PHPCS source location -->
+    <config name="installed_paths" value="vendor/slevomat/coding-standard"/><!-- relative path from PHPCS source location -->
 
     <arg name="basepath" value="."/>
     <arg name="cache" value=".phpcs-cache"/>
@@ -27,6 +26,7 @@
                 <element value="enum cases"/>
                 <element value="public constants"/>
                 <element value="constants"/>
+                <element value="public static properties, protected static properties, private static properties"/>
                 <element value="public properties, protected properties, private properties"/>
                 <element value="constructor"/>
                 <element value="all public methods"/>
@@ -36,7 +36,6 @@
     </rule>
     <rule ref="SlevomatCodingStandard.Classes.ConstantSpacing">
         <properties>
-            <property name="elementsToCheck" value="const, property"/>
             <property name="minLinesCountBeforeWithComment" value="0"/>
             <property name="maxLinesCountBeforeWithComment" value="0"/>
             <property name="minLinesCountBeforeWithoutComment" value="1"/>
@@ -45,7 +44,7 @@
     </rule>
     <rule ref="SlevomatCodingStandard.Classes.ForbiddenPublicProperty">
         <properties>
-            <property name="checkPromoted" value="0"/>
+            <property name="checkPromoted" value="false"/>
         </properties>
     </rule>
     <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
@@ -61,6 +60,4 @@
             <property name="alwaysVariableOnRight" value="true"/>
         </properties>
     </rule>
-    <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch"/>
-    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes"/>
 </ruleset>
