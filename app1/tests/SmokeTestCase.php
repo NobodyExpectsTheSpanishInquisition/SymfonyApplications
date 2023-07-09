@@ -114,10 +114,12 @@ class SmokeTestCase extends WebTestCase
      * @throws MissingMandatoryParametersException
      * @throws RouteNotFoundException
      */
-    protected function sendGetRequest(string $routeName, array $parameters = []): void
+    protected function sendGetRequest(string $routeName, array $parameters = []): Response
     {
         $uri = $this->router->generate($routeName, $parameters);
 
         $this->client->request(self::GET_HTTP_METHOD, $uri);
+
+        return $this->client->getResponse();
     }
 }

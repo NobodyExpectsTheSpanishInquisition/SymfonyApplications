@@ -12,3 +12,8 @@ api.users.update:
   path: /api/users/{id}
   methods: PATCH
   controller: App\Core\UpdateUser\UpdateUserController::update
+
+api.users.index:
+  path: /api/users
+  methods: GET
+  controller: App\Core\IndexUsers\IndexUsersController::index

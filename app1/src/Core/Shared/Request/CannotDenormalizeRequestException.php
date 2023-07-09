@@ -23,4 +23,9 @@ final class CannotDenormalizeRequestException extends LogicException
     {
         return new self(sprintf('Request violates rules. Violated rules: %s', implode(', ', $violations)));
     }
+
+    public static function becausePaginationIsIncorrect(string $incorrectPaginationExceptionMessage): self
+    {
+        return new self($incorrectPaginationExceptionMessage);
+    }
 }

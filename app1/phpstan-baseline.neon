@@ -11,6 +11,16 @@ parameters:
 			path: src/Core/CreateUser/CreateUserRequestDenormalizer.php
 
 		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: src/Core/IndexUsers/DoctrineIndexUsersRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of method App\\\\Core\\\\IndexUsers\\\\IndexUsersRequestDenormalizer\\:\\:denormalize\\(\\) expects array\\<string, string\\>, array\\<string, array\\|bool\\|float\\|int\\|string\\> given\\.$#"
+			count: 1
+			path: src/Core/IndexUsers/IndexUsersController.php
+
+		-
 			message: "#^Parameter \\#1 \\$email of class App\\\\Core\\\\Shared\\\\ValueObject\\\\Email constructor expects string, mixed given\\.$#"
 			count: 1
 			path: src/Core/UpdateUser/UpdateUserRequestDenormalizer.php
@@ -49,6 +59,31 @@ parameters:
 			message: "#^Property App\\\\Tests\\\\Core\\\\GetUser\\\\GetUserHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\GetUser\\\\GetUserHandler\\) does not accept object\\|null\\.$#"
 			count: 1
 			path: tests/Core/GetUser/GetUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$userFactory of class App\\\\Tests\\\\Core\\\\IndexUsers\\\\IndexUsersTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/IndexUsers/IndexUsersControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$userFactory of class App\\\\Tests\\\\Core\\\\IndexUsers\\\\IndexUsersTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/IndexUsers/IndexUsersHandlerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Core\\\\IndexUsers\\\\IndexUsersHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\IndexUsers\\\\IndexUsersHandler\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Core/IndexUsers/IndexUsersHandlerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Core\\\\IndexUsers\\\\IndexUsersTestData\\:\\:getExpectedEmptyUsersList\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: tests/Core/IndexUsers/IndexUsersTestData.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Core\\\\IndexUsers\\\\IndexUsersTestData\\:\\:getExpectedFilledUsersList\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: tests/Core/IndexUsers/IndexUsersTestData.php
 
 		-
 			message: "#^Property App\\\\Tests\\\\Core\\\\Shared\\\\Validator\\\\UniqueEmailValidatorTest\\:\\:\\$validator \\(App\\\\Core\\\\Shared\\\\Validator\\\\UniqueEmailValidator\\) does not accept object\\|null\\.$#"
