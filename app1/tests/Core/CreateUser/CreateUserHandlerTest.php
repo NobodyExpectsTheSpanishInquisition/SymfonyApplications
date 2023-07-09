@@ -39,10 +39,7 @@ final class CreateUserHandlerTest extends IntegrationTestCase
 
     public function test_Handle_ShouldNotSaveUserInDatabase_WhenTransactionFailed(): void
     {
-        $transactionManagerMock = $this->createMock(TransactionManagerInterface::class);
-        $transactionManagerMock
-            ->method('wrapInTransaction')
-            ->willThrowException(new TransactionException());
+        $transactionManagerMock = $this->mockTransactionManagerFailure();
         $command = $this->testData->getCommand();
 
         $handler = new CreateUserHandler(
@@ -58,10 +55,7 @@ final class CreateUserHandlerTest extends IntegrationTestCase
 
     public function test_Handle_ShouldDispatchUserCreationFailedEvent_WhenTransactionFailed(): void
     {
-        $transactionManagerMock = $this->createMock(TransactionManagerInterface::class);
-        $transactionManagerMock
-            ->method('wrapInTransaction')
-            ->willThrowException(new TransactionException());
+        $transactionManagerMock = $this->mockTransactionManagerFailure();
         $command = $this->testData->getCommand();
 
         $handler = new CreateUserHandler(

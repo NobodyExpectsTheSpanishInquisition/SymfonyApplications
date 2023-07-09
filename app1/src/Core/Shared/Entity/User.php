@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Core\Shared\Entity;
 
+use App\Core\Shared\Event\EventStoreInterface;
 use App\Core\Shared\ValueObject\Email;
 use App\Core\Shared\ValueObject\Uuid;
+use App\Core\UpdateUser\CannotUpdateUserException;
+use App\Core\UpdateUser\UpdateUserAssertions;
+use App\Core\UpdateUser\UserUpdated;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,14 +30,30 @@ class User
         $this->email = $email->email;
     }
 
+    /**
+     * @throws CannotUpdateUserException
+     */
+    public function edit(Email $email, UpdateUserAssertions $updateUserValidator, EventStoreInterface $eventStore): void
+    {
+        $updateUserValidator->validate($email);
+
+        $this->editEmail($email);
+
+        $eventStore->push(new UserUpdated($this->getId()->uuid, $this->getEmail()->email));
+    }
+
     public function getId(): Uuid
     {
         return new Uuid($this->id);
     }
 
-
     public function getEmail(): Email
     {
         return new Email($this->email);
+    }
+
+    private function editEmail(Email $email): void
+    {
+        $this->email = $email->email;
     }
 }

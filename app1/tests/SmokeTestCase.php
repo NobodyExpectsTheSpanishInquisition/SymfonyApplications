@@ -22,6 +22,8 @@ class SmokeTestCase extends WebTestCase
 
     private const GET_HTTP_METHOD = 'GET';
 
+    private const PATCH_HTTP_METHOD = 'PATCH';
+
     protected KernelBrowser $client;
     private Router $router;
 
@@ -77,6 +79,29 @@ class SmokeTestCase extends WebTestCase
             method    : self::POST_HTTP_METHOD,
             uri       : $uri,
             parameters: $parameters,
+        );
+
+        /** @var Response */
+        return $this->client->getResponse();
+    }
+
+    /**
+     * @param array<string, mixed> $queryParameters
+     * @param array<string, mixed> $requestParameters
+     * @throws InvalidParameterException
+     * @throws MissingMandatoryParametersException
+     * @throws RouteNotFoundException
+     */
+    protected function sendPatchRequestWithResponse(
+        string $routeName,
+        array $queryParameters,
+        array $requestParameters
+    ): Response {
+        $uri = $this->router->generate($routeName, $queryParameters);
+        $this->client->request(
+            method    : self::PATCH_HTTP_METHOD,
+            uri       : $uri,
+            parameters: $requestParameters,
         );
 
         /** @var Response */

@@ -11,7 +11,17 @@ parameters:
 			path: src/Core/CreateUser/CreateUserRequestDenormalizer.php
 
 		-
+			message: "#^Parameter \\#1 \\$email of class App\\\\Core\\\\Shared\\\\ValueObject\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Core/UpdateUser/UpdateUserRequestDenormalizer.php
+
+		-
 			message: "#^Parameter \\#1 \\$userFactory of class App\\\\Core\\\\CreateUser\\\\CreateUserHandler constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/CreateUser/CreateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$transactionManager of class App\\\\Core\\\\CreateUser\\\\CreateUserHandler constructor expects App\\\\Core\\\\Shared\\\\Repository\\\\Port\\\\TransactionManagerInterface, App\\\\Core\\\\Shared\\\\Repository\\\\Port\\\\TransactionManagerInterface\\|PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
 			count: 2
 			path: tests/Core/CreateUser/CreateUserHandlerTest.php
 
@@ -39,6 +49,46 @@ parameters:
 			message: "#^Property App\\\\Tests\\\\Core\\\\GetUser\\\\GetUserHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\GetUser\\\\GetUserHandler\\) does not accept object\\|null\\.$#"
 			count: 1
 			path: tests/Core/GetUser/GetUserHandlerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Core\\\\Shared\\\\Validator\\\\UniqueEmailValidatorTest\\:\\:\\$validator \\(App\\\\Core\\\\Shared\\\\Validator\\\\UniqueEmailValidator\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Core/Shared/Validator/UniqueEmailValidatorTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$userFactory of class App\\\\Tests\\\\Core\\\\UpdateUser\\\\UpdateUserTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/UpdateUser/UpdateUserControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$userRepository of class App\\\\Core\\\\UpdateUser\\\\UpdateUserHandler constructor expects App\\\\Core\\\\Shared\\\\Repository\\\\Port\\\\UserRepositoryInterface, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/UpdateUser/UpdateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$updateUserAssertions of class App\\\\Core\\\\UpdateUser\\\\UpdateUserHandler constructor expects App\\\\Core\\\\UpdateUser\\\\UpdateUserAssertions, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/UpdateUser/UpdateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$userFactory of class App\\\\Tests\\\\Core\\\\UpdateUser\\\\UpdateUserTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/UpdateUser/UpdateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$transactionManager of class App\\\\Core\\\\UpdateUser\\\\UpdateUserHandler constructor expects App\\\\Core\\\\Shared\\\\Repository\\\\Port\\\\TransactionManagerInterface, App\\\\Core\\\\Shared\\\\Repository\\\\Port\\\\TransactionManagerInterface\\|PHPUnit\\\\Framework\\\\MockObject\\\\MockObject given\\.$#"
+			count: 2
+			path: tests/Core/UpdateUser/UpdateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#4 \\$eventDispatcher of class App\\\\Core\\\\UpdateUser\\\\UpdateUserHandler constructor expects App\\\\Core\\\\Shared\\\\Event\\\\EventDispatcherInterface, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/UpdateUser/UpdateUserHandlerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Core\\\\UpdateUser\\\\UpdateUserHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\UpdateUser\\\\UpdateUserHandler\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Core/UpdateUser/UpdateUserHandlerTest.php
 
 		-
 			message: "#^Method App\\\\Tests\\\\IntegrationTestCase\\:\\:getEntityManager\\(\\) should return Doctrine\\\\ORM\\\\EntityManagerInterface but returns object\\|null\\.$#"

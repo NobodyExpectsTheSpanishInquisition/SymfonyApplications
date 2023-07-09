@@ -7,3 +7,8 @@ api.users.get:
   path: /api/users/{id}
   methods: GET
   controller: App\Core\GetUser\GetUserController::get
+
+api.users.update:
+  path: /api/users/{id}
+  methods: PATCH
+  controller: App\Core\UpdateUser\UpdateUserController::update
