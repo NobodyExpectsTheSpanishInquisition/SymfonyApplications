@@ -1,0 +1,46 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$email of class App\\\\Core\\\\Shared\\\\ValueObject\\\\Email constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Core/CreateUser/CreateUserRequestDenormalizer.php
+
+		-
+			message: "#^Parameter \\#1 \\$uuid of class App\\\\Core\\\\Shared\\\\ValueObject\\\\Uuid constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Core/CreateUser/CreateUserRequestDenormalizer.php
+
+		-
+			message: "#^Parameter \\#1 \\$userFactory of class App\\\\Core\\\\CreateUser\\\\CreateUserHandler constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/CreateUser/CreateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$userRepository of class App\\\\Core\\\\CreateUser\\\\CreateUserHandler constructor expects App\\\\Core\\\\Shared\\\\Repository\\\\Port\\\\UserRepositoryInterface, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/CreateUser/CreateUserHandlerTest.php
+
+		-
+			message: "#^Parameter \\#4 \\$eventDispatcher of class App\\\\Core\\\\CreateUser\\\\CreateUserHandler constructor expects App\\\\Core\\\\Shared\\\\Event\\\\EventDispatcherInterface, object\\|null given\\.$#"
+			count: 2
+			path: tests/Core/CreateUser/CreateUserHandlerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Core\\\\CreateUser\\\\CreateUserHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\CreateUser\\\\CreateUserHandler\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Core/CreateUser/CreateUserHandlerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\IntegrationTestCase\\:\\:getEntityManager\\(\\) should return Doctrine\\\\ORM\\\\EntityManagerInterface but returns object\\|null\\.$#"
+			count: 1
+			path: tests/IntegrationTestCase.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\SmokeTestCase\\:\\:getEntityManager\\(\\) should return Doctrine\\\\ORM\\\\EntityManagerInterface but returns object\\|null\\.$#"
+			count: 1
+			path: tests/SmokeTestCase.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\SmokeTestCase\\:\\:\\$router \\(Symfony\\\\Component\\\\Routing\\\\Router\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/SmokeTestCase.php

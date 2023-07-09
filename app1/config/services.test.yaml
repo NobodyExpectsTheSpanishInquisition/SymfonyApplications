@@ -1,0 +1,9 @@
+when@test:
+  services:
+    _defaults:
+      autowire: true
+      autoconfigure: true
+      public: true
+
+    App\Tests\Stub\QueueClientStub: ~
+    App\Core\Shared\Event\QueueClientInterface: '@App\Tests\Stub\QueueClientStub'
