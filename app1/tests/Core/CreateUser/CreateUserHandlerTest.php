@@ -7,8 +7,6 @@ namespace App\Tests\Core\CreateUser;
 use App\Core\CreateUser\CreateUserHandler;
 use App\Core\CreateUser\UserFactory;
 use App\Core\Shared\Event\EventDispatcherInterface;
-use App\Core\Shared\Repository\Exception\TransactionException;
-use App\Core\Shared\Repository\Port\TransactionManagerInterface;
 use App\Core\Shared\Repository\Port\UserRepositoryInterface;
 use App\Tests\IntegrationTestCase;
 

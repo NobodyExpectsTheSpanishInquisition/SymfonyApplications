@@ -1,0 +1,4 @@
+ARG IMAGE_TAG
+FROM nginx:${IMAGE_TAG}
+
+COPY ./config/default.conf.example /etc/nginx/conf.d/default.conf

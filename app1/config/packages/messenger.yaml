@@ -9,11 +9,14 @@ framework:
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
           event:
-            dsn: '%env(RABBITMQ_TRANSPORT_DSN)%'
+            dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
             serializer: messenger.transport.symfony_serializer
             options:
-              exchange: 'event_exchange'
-              queue: 'app1_queue'
+              exchange:
+                name: 'event_exchange'
+                type: direct
+              queues:
+                app1_queue:
 
         routing:
             # Route your messages to the transports
