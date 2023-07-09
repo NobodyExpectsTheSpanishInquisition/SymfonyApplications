@@ -29,6 +29,8 @@ final readonly class CreateUserHandler
         try {
             $this->transactionManager->wrapInTransaction(function () use ($user): void {
                 $this->userRepository->save($user);
+                $this->eventDispatcher->push(new UserCreated($user->getId()->uuid, $user->getEmail()->email));
+                $this->eventDispatcher->dispatch();
             });
         } catch (TransactionException) {
             $this->eventDispatcher->push(new UserCreationFailed($userId->uuid, $email->email));
@@ -36,8 +38,5 @@ final readonly class CreateUserHandler
 
             return;
         }
-
-        $this->eventDispatcher->push(new UserCreated($userId->uuid, $email->email));
-        $this->eventDispatcher->dispatch();
     }
 }

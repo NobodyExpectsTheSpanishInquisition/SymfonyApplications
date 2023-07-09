@@ -39,6 +39,8 @@ final readonly class UpdateUserHandler
         try {
             $this->transactionManager->wrapInTransaction(function () use ($user, $email): void {
                 $user->edit($email, $this->updateUserAssertions, $this->eventDispatcher);
+
+                $this->eventDispatcher->dispatch();
             });
         } catch (TransactionException $e) {
             $this->eventDispatcher->push(new UserUpdateFailed($userId->uuid));
@@ -46,7 +48,5 @@ final readonly class UpdateUserHandler
 
             throw new CannotUpdateUserException($e->getMessage());
         }
-
-        $this->eventDispatcher->dispatch();
     }
 }
