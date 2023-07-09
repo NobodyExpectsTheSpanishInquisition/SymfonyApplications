@@ -1,4 +1,9 @@
-api.user.create:
+api.users.create:
   path: /api/users
   methods: POST
   controller: App\Core\CreateUser\CreateUserController::create
+
+api.users.get:
+  path: /api/users/{id}
+  methods: GET
+  controller: App\Core\GetUser\GetUserController::get

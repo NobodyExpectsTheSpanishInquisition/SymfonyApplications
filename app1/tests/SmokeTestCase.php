@@ -19,6 +19,8 @@ class SmokeTestCase extends WebTestCase
 {
     private const POST_HTTP_METHOD = 'POST';
 
+    private const GET_HTTP_METHOD = 'GET';
+
     protected KernelBrowser $client;
     private Router $router;
 
@@ -44,7 +46,7 @@ class SmokeTestCase extends WebTestCase
         $this->getEntityManager()->beginTransaction();
     }
 
-    private function getEntityManager(): EntityManagerInterface
+    protected function getEntityManager(): EntityManagerInterface
     {
         return self::getContainer()->get(EntityManagerInterface::class);
     }
@@ -75,5 +77,18 @@ class SmokeTestCase extends WebTestCase
             uri       : $uri,
             parameters: $parameters,
         );
+    }
+
+    /**
+     * @param array<string, mixed> $parameters
+     * @throws InvalidParameterException
+     * @throws MissingMandatoryParametersException
+     * @throws RouteNotFoundException
+     */
+    protected function sendGetRequest(string $routeName, array $parameters = []): void
+    {
+        $uri = $this->router->generate($routeName, $parameters);
+
+        $this->client->request(self::GET_HTTP_METHOD, $uri);
     }
 }

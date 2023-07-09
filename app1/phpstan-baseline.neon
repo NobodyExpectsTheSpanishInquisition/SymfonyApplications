@@ -31,6 +31,16 @@ parameters:
 			path: tests/Core/CreateUser/CreateUserHandlerTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$userFactory of class App\\\\Tests\\\\Core\\\\GetUser\\\\GetUserTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/GetUser/GetUserHandlerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Core\\\\GetUser\\\\GetUserHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\GetUser\\\\GetUserHandler\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Core/GetUser/GetUserHandlerTest.php
+
+		-
 			message: "#^Method App\\\\Tests\\\\IntegrationTestCase\\:\\:getEntityManager\\(\\) should return Doctrine\\\\ORM\\\\EntityManagerInterface but returns object\\|null\\.$#"
 			count: 1
 			path: tests/IntegrationTestCase.php

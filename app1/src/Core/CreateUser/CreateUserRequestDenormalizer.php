@@ -13,7 +13,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final readonly class CreateUserRequestDenormalizer
 {
     private const ID_FIELD = 'id';
+
     private const EMAIL_FIELD = 'email';
+
     private const REQUIRED_FIELDS = [
         self::ID_FIELD,
         self::EMAIL_FIELD,

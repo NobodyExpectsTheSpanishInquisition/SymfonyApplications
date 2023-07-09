@@ -8,7 +8,7 @@ use App\Tests\SmokeTestCase;
 
 final class CreateUserControllerTest extends SmokeTestCase
 {
-    private const ROUTE_NAME = 'api.user.create';
+    private const ROUTE_NAME = 'api.users.create';
 
     public function test_Create_ShouldReturnCreatedUser_WhenAllPassedValuesAreCorrect(): void
     {

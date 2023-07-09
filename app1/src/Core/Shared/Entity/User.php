@@ -25,4 +25,15 @@ class User
         $this->id = $id->uuid;
         $this->email = $email->email;
     }
+
+    public function getId(): Uuid
+    {
+        return new Uuid($this->id);
+    }
+
+
+    public function getEmail(): Email
+    {
+        return new Email($this->email);
+    }
 }
