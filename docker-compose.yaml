@@ -28,3 +28,14 @@ services:
     ports:
       - ${APP1_POSTGRES_PORT}:5432
     container_name: app-1-db
+
+  rabbitmq:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.rabbitmq
+      args:
+        - IMAGE_TAG=${RABBITMQ_IMAGE_TAG}
+    ports:
+      - ${RABBITMQ_EXTERNAL_PORT}:15672
