@@ -121,3 +121,14 @@ Example file with phpstan configuration can be found in **./config/phpstan.neon.
 - Integration - Check integration between application and external service. For example check if data were correctly 
   saved in database.
 - Unit - Check if domain logic is implemented correctly or single service works as expected. 
+
+### Queueing
+To queue handling is used **symfony/messenger** configured for rabbitmq.
+
+### Server
+To expose applications for external requests used was **nginx**
+
+## Applications
+
+### App1
+[link to app1 readme](./app1/readme.md)
