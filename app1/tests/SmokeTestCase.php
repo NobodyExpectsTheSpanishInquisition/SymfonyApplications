@@ -10,6 +10,7 @@ use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
@@ -69,7 +70,7 @@ class SmokeTestCase extends WebTestCase
      * @throws MissingMandatoryParametersException
      * @throws RouteNotFoundException
      */
-    protected function sendPostRequest(string $routeName, array $parameters): void
+    protected function sendPostRequestWithResponse(string $routeName, array $parameters): Response
     {
         $uri = $this->router->generate($routeName);
         $this->client->request(
@@ -77,6 +78,9 @@ class SmokeTestCase extends WebTestCase
             uri       : $uri,
             parameters: $parameters,
         );
+
+        /** @var Response */
+        return $this->client->getResponse();
     }
 
     /**

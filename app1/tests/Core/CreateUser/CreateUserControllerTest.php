@@ -9,22 +9,27 @@ use App\Tests\SmokeTestCase;
 final class CreateUserControllerTest extends SmokeTestCase
 {
     private const ROUTE_NAME = 'api.users.create';
+    private CreateUserTestData $testData;
 
     public function test_Create_ShouldReturnCreatedUser_WhenAllPassedValuesAreCorrect(): void
     {
-        $this->sendPostRequest(self::ROUTE_NAME, [
-            'id' => 'C831F4D0-1B54-46C2-9C72-3BB041079579',
-            'email' => 'test@email.com',
+        $response = $this->sendPostRequestWithResponse(self::ROUTE_NAME, [
+            'id' => $this->testData->getUserId()->uuid,
+            'email' => $this->testData->getEmail()->email,
         ]);
 
         self::assertResponseStatusCodeSame(201);
+        self::assertEquals(
+            json_encode($this->testData->getExpectedCreatedUser()->jsonSerialize()),
+            $response->getContent()
+        );
     }
 
     public function test_Create_ShouldThrowBadRequestHttpException_WhenIncorrectIdPassed(): void
     {
-        $this->sendPostRequest(self::ROUTE_NAME, [
+        $this->sendPostRequestWithResponse(self::ROUTE_NAME, [
             'id' => 'incorrect id',
-            'email' => 'test@email.com',
+            'email' => $this->testData->getEmail()->email,
         ]);
 
         self::assertResponseStatusCodeSame(400);
@@ -32,8 +37,8 @@ final class CreateUserControllerTest extends SmokeTestCase
 
     public function test_Create_ShouldThrowBadRequestHttpException_WhenIncorrectEmailPassed(): void
     {
-        $this->sendPostRequest(self::ROUTE_NAME, [
-            'id' => 'C831F4D0-1B54-46C2-9C72-3BB041079579',
+        $this->sendPostRequestWithResponse(self::ROUTE_NAME, [
+            'id' => $this->testData->getUserId()->uuid,
             'email' => 'test    @email.com',
         ]);
 
@@ -42,8 +47,8 @@ final class CreateUserControllerTest extends SmokeTestCase
 
     public function test_Create_ShouldThrowBadRequestHttpException_WhenIdFieldIsMissing(): void
     {
-        $this->sendPostRequest(self::ROUTE_NAME, [
-            'email' => 'test@email.com',
+        $this->sendPostRequestWithResponse(self::ROUTE_NAME, [
+            'email' => $this->testData->getEmail()->email,
         ]);
 
         self::assertResponseStatusCodeSame(400);
@@ -51,10 +56,17 @@ final class CreateUserControllerTest extends SmokeTestCase
 
     public function test_Create_ShouldThrowBadRequestHttpException_WhenEmailFieldIsMissing(): void
     {
-        $this->sendPostRequest(self::ROUTE_NAME, [
-            'id' => 'C831F4D0-1B54-46C2-9C72-3BB041079579',
+        $this->sendPostRequestWithResponse(self::ROUTE_NAME, [
+            'id' => $this->testData->getUserId()->uuid,
         ]);
 
         self::assertResponseStatusCodeSame(400);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->testData = new CreateUserTestData();
     }
 }

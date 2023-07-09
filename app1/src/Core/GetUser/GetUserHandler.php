@@ -7,6 +7,7 @@ namespace App\Core\GetUser;
 use App\Core\Shared\Entity\User;
 use App\Core\Shared\Repository\Exception\NotFoundException;
 use App\Core\Shared\Repository\Port\UserRepositoryInterface;
+use App\Core\Shared\View\UserView;
 
 final readonly class GetUserHandler
 {

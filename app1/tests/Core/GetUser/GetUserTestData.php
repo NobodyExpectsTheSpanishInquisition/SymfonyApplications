@@ -6,9 +6,9 @@ namespace App\Tests\Core\GetUser;
 
 use App\Core\CreateUser\UserFactory;
 use App\Core\GetUser\GetUserQuery;
-use App\Core\GetUser\UserView;
 use App\Core\Shared\ValueObject\Email;
 use App\Core\Shared\ValueObject\Uuid;
+use App\Core\Shared\View\UserView;
 use Doctrine\ORM\EntityManagerInterface;
 
 final readonly class GetUserTestData

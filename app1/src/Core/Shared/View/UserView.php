@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\GetUser;
+namespace App\Core\Shared\View;
 
 use JsonSerializable;
 

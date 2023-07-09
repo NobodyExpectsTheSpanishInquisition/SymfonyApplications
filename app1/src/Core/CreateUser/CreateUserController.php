@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Core\CreateUser;
 
+use App\Core\Shared\Dpi\UserDpiInterface;
 use App\Core\Shared\Request\CannotDenormalizeRequestException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,7 +16,8 @@ final class CreateUserController extends AbstractController
     public function create(
         Request $request,
         CreateUserRequestDenormalizer $denormalizer,
-        CreateUserHandler $createUserHandler
+        CreateUserHandler $createUserHandler,
+        UserDpiInterface $userDpi
     ): JsonResponse {
         try {
             $createUserRequest = $denormalizer->denormalize($request->request->all());
@@ -25,6 +27,6 @@ final class CreateUserController extends AbstractController
 
         $createUserHandler->handle(new CreateUserCommand($createUserRequest->id, $createUserRequest->email));
 
-        return new JsonResponse(null, 201);
+        return new JsonResponse($userDpi->getById($createUserRequest->id), 201);
     }
 }
