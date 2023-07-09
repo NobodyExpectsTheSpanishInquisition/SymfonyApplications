@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\CreateUser\Presentation;
+namespace App\Core\CreateUser;
 
 use App\Core\Shared\ValueObject\Email;
 use App\Core\Shared\ValueObject\Uuid;
@@ -14,6 +14,5 @@ final readonly class CreateUserRequest
         #[Assert\Valid] public Uuid $id,
         #[Assert\Valid] public Email $email
     ) {
-
     }
 }

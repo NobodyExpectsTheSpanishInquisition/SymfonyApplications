@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use http\Exception\RuntimeException;
+use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
@@ -34,6 +35,30 @@ class SmokeTestCase extends WebTestCase
         } catch (ServiceNotFoundException $e) {
             throw new RuntimeException($e->getMessage());
         }
+
+        $this->beginTransaction();
+    }
+
+    private function beginTransaction(): void
+    {
+        $this->getEntityManager()->beginTransaction();
+    }
+
+    private function getEntityManager(): EntityManagerInterface
+    {
+        return self::getContainer()->get(EntityManagerInterface::class);
+    }
+
+    protected function tearDown(): void
+    {
+        $this->rollbackTransaction();
+
+        parent::tearDown();
+    }
+
+    private function rollbackTransaction(): void
+    {
+        $this->getEntityManager()->rollback();
     }
 
     /**

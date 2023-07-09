@@ -9,15 +9,18 @@ use LogicException;
 final class CannotDenormalizeRequestException extends LogicException
 {
     /**
-     * @param array<int, string> $requiredFields
+     * @param array<int, string> $missingFields
      */
-    public static function becauseRequiredFieldsAreMissing(array $requiredFields): self
+    public static function becauseRequiredFieldsAreMissing(array $missingFields): self
     {
-        return new self(sprintf('Required fields are missing. Required fields: %s.', implode(', ', $requiredFields)));
+        return new self(sprintf('Required fields are missing. Missing fields: %s.', implode(', ', $missingFields)));
     }
 
-    public static function becauseRequestViolatesRules(string $violations): self
+    /**
+     * @param array<int, string> $violations
+     */
+    public static function becauseRequestViolatesRules(array $violations): self
     {
-        return new self(sprintf('Request violates rules. Violated rules: %s', $violations));
+        return new self(sprintf('Request violates rules. Violated rules: %s', implode(', ', $violations)));
     }
 }

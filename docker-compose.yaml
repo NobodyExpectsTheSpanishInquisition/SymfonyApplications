@@ -1,5 +1,5 @@
 services:
-  app-1:
+  app1:
     env_file:
       - .env
     build:
@@ -10,3 +10,19 @@ services:
     container_name: app-1
     volumes:
       - ./app1:/var/www/html:rw
+
+  app1db:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.app1.db
+      args:
+        - IMAGE_TAG=${POSTGRES_IMAGE_TAG}
+    environment:
+      - POSTGRES_PASSWORD=${APP1_POSTGRES_PASSWORD}
+      - POSTGRES_USER=${APP1_POSTGRES_USER}
+      - POSTGRES_DB=${APP1_POSTGRES_DB}
+    ports:
+      - ${APP1_POSTGRES_PORT}:5432
+    container_name: app-1-db
