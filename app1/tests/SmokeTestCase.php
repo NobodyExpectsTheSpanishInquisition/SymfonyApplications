@@ -24,6 +24,8 @@ class SmokeTestCase extends WebTestCase
 
     private const PATCH_HTTP_METHOD = 'PATCH';
 
+    private const DELETE_HTTP_METHOD = 'DELETE';
+
     protected KernelBrowser $client;
     private Router $router;
 
@@ -121,5 +123,18 @@ class SmokeTestCase extends WebTestCase
         $this->client->request(self::GET_HTTP_METHOD, $uri);
 
         return $this->client->getResponse();
+    }
+
+    /**
+     * @param array<string, string> $parameters
+     * @throws InvalidParameterException
+     * @throws MissingMandatoryParametersException
+     * @throws RouteNotFoundException
+     */
+    protected function sendDeleteRequest(string $routeName, array $parameters = []): void
+    {
+        $uri = $this->router->generate($routeName, $parameters);
+
+        $this->client->request(self::DELETE_HTTP_METHOD, $uri);
     }
 }

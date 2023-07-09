@@ -12,4 +12,6 @@ interface UserRepositoryInterface
     public function save(User $user): void;
 
     public function findById(Uuid $userId): ?User;
+
+    public function remove(User $user): void;
 }

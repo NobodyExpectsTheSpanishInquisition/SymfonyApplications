@@ -24,4 +24,9 @@ final readonly class DoctrineUserRepository implements UserRepositoryInterface
     {
         return $this->entityManager->find(User::class, $userId->uuid);
     }
+
+    public function remove(User $user): void
+    {
+        $this->entityManager->remove($user);
+    }
 }

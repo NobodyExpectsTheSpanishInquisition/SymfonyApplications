@@ -51,6 +51,21 @@ parameters:
 			path: tests/Core/CreateUser/CreateUserHandlerTest.php
 
 		-
+			message: "#^Parameter \\#2 \\$userFactory of class App\\\\Tests\\\\Core\\\\DeleteUser\\\\DeleteUserTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/DeleteUser/DeleteUserControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$userFactory of class App\\\\Tests\\\\Core\\\\DeleteUser\\\\DeleteUserTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
+			count: 1
+			path: tests/Core/DeleteUser/DeleteUserHandlerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Core\\\\DeleteUser\\\\DeleteUserHandlerTest\\:\\:\\$handler \\(App\\\\Core\\\\DeleteUser\\\\DeleteUserHandler\\) does not accept object\\|null\\.$#"
+			count: 1
+			path: tests/Core/DeleteUser/DeleteUserHandlerTest.php
+
+		-
 			message: "#^Parameter \\#1 \\$userFactory of class App\\\\Tests\\\\Core\\\\GetUser\\\\GetUserTestData constructor expects App\\\\Core\\\\CreateUser\\\\UserFactory, object\\|null given\\.$#"
 			count: 1
 			path: tests/Core/GetUser/GetUserHandlerTest.php

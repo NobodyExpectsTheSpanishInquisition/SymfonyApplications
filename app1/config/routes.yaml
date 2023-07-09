@@ -17,3 +17,8 @@ api.users.index:
   path: /api/users
   methods: GET
   controller: App\Core\IndexUsers\IndexUsersController::index
+
+api.users.delete:
+  path: /api/users/{id}
+  methods: DELETE
+  controller: App\Core\DeleteUser\DeleteUserController::delete
