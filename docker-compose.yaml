@@ -54,3 +54,17 @@ services:
     container_name: nginx
     volumes:
       - ./users:/var/www/html:rw
+
+  auth:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile.auth
+      args:
+        - IMAGE_TAG=${PHP_IMAGE_TAG}
+    container_name: auth
+    volumes:
+      - ./auth:/var/www/html:rw
+      - ./config/phpcs.xml.example:/var/www/html/phpcs.xml.dist
+      - ./config/phpstan.neon.example:/var/www/html/phpstan.neon
