@@ -1,33 +1,33 @@
 services:
-  app1:
+  users:
     env_file:
       - .env
     build:
       context: .
-      dockerfile: Dockerfile.app1
+      dockerfile: Dockerfile.users
       args:
         - IMAGE_TAG=${PHP_IMAGE_TAG}
-    container_name: app-1
+    container_name: users
     volumes:
-      - ./app1:/var/www/html:rw
+      - ./users:/var/www/html:rw
       - ./config/phpcs.xml.example:/var/www/html/phpcs.xml.dist
       - ./config/phpstan.neon.example:/var/www/html/phpstan.neon
 
-  app1db:
+  usersdb:
     env_file:
       - .env
     build:
       context: .
-      dockerfile: Dockerfile.app1.db
+      dockerfile: Dockerfile.users.db
       args:
         - IMAGE_TAG=${POSTGRES_IMAGE_TAG}
     environment:
-      - POSTGRES_PASSWORD=${APP1_POSTGRES_PASSWORD}
-      - POSTGRES_USER=${APP1_POSTGRES_USER}
-      - POSTGRES_DB=${APP1_POSTGRES_DB}
+      - POSTGRES_PASSWORD=${USERS_POSTGRES_PASSWORD}
+      - POSTGRES_USER=${USERS_POSTGRES_USER}
+      - POSTGRES_DB=${USERS_POSTGRES_DB}
     ports:
-      - ${APP1_POSTGRES_PORT}:5432
-    container_name: app-1-db
+      - ${USERS_POSTGRES_PORT}:5432
+    container_name: users-db
 
   rabbitmq:
     env_file:
@@ -50,7 +50,7 @@ services:
       args:
         - IMAGE_TAG=${NGINX_IMAGE_TAG}
     ports:
-      - ${APP1_NGINX_EXTERNAL_PORT}:80
+      - ${USERS_NGINX_EXTERNAL_PORT}:80
     container_name: nginx
     volumes:
-      - ./app1:/var/www/html:rw
+      - ./users:/var/www/html:rw

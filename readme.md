@@ -131,4 +131,4 @@ To expose applications for external requests used was **nginx**
 ## Applications
 
 ### App1
-[link to app1 readme](./app1/readme.md)
+[link to app1 readme](users/readme.md)
